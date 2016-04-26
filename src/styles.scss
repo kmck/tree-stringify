@@ -1,0 +1,96 @@
+@import 'reset';
+
+$color-black: #272822;
+$color-pink: #f92672;
+$color-white: #f8f8f0;
+$color-purple: #a37ef2;
+
+$background-color: $color-black;
+$text-color: $color-white;
+
+$header-background-color: $color-pink;
+$header-text-color: $color-white;
+
+$editor-header-background-color: $color-purple;
+$editor-header-text-color: $color-white;
+
+$text-font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+
+$menu-height: 36px;
+$padding: 10px;
+
+body {
+    background-color: $background-color;
+    color: $text-color;
+    font-family: $text-font-family;
+    opacity: 1;
+}
+
+a {
+    color: inherit;
+}
+
+.top-bar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: $menu-height;
+    overflow: hidden;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+
+    background-color: $header-background-color;
+    color: $header-text-color;
+
+    .title {
+        flex-grow: 1;
+        font-weight: bold;
+        padding-left: $padding;
+        padding-right: $padding;
+    }
+
+    .menu {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-right: ceil(0.5 * $padding);
+    }
+
+    .menu-item {
+        padding-left: ceil(0.5 * $padding);
+        padding-right: floor(0.5 * $padding);
+    }
+}
+
+.demo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    padding-top: $menu-height;
+    z-index: 1;
+
+    .editor-header {
+        padding-left: $padding;
+        padding-right: $padding;
+
+        background-color: $editor-header-background-color;
+        color: $editor-header-text-color;
+
+        line-height: 1.5;
+    }
+
+    .editor-container {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+
+        .ace_editor {
+            flex-grow: 1;
+        }
+    }
+}

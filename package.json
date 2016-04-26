@@ -1,0 +1,32 @@
+{
+  "name": "tree-stringify-demo",
+  "version": "1.0.0",
+  "description": "Transforms an object into a beautiful tree",
+  "main": "./index.js",
+  "scripts": {
+    "build": "rm -rf dist && webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Keith McKnight",
+  "license": "MIT",
+  "dependencies": {
+    "autoprefixer": "^6.3.6",
+    "brace": "^0.8.0",
+    "css-loader": "^0.23.1",
+    "json-loader": "^0.5.4",
+    "json5": "^0.5.0",
+    "lodash": "^4.13.1",
+    "minimist": "^1.2.0",
+    "node-sass": "^3.7.0",
+    "postcss-loader": "^0.9.1",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "tree-stringify": "^1.0.1",
+    "webpack": "^1.13.1"
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true
+    }
+  }
+}
