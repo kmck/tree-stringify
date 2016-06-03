@@ -79,12 +79,12 @@
 	    try {
 	        var jsonValue = JSON5.parse(editorValue);
 	        outputEditor.setValue(treeStringify(jsonValue), -1);
-
-	        if (hasLocalStorage) {
-	            localStorage.setItem('treeStringifyInput', editorValue);
-	        }
 	    } catch (e) {
 	        console.error(e);
+	    }
+
+	    if (hasLocalStorage) {
+	        localStorage.setItem('treeStringifyInput', editorValue);
 	    }
 	}
 
@@ -23119,7 +23119,7 @@
 		"homepage": "https://github.com/kmck/tree-stringify#readme",
 		"_id": "tree-stringify@1.0.2",
 		"_shasum": "4b0139b34dd4c5c3caf2df2492850e9d98ee97c3",
-		"_from": "tree-stringify@latest"
+		"_from": "tree-stringify@>=1.0.2 <2.0.0"
 	};
 
 /***/ }

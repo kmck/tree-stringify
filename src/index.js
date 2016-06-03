@@ -33,12 +33,12 @@ function updateOutput() {
     try {
         var jsonValue = JSON5.parse(editorValue);
         outputEditor.setValue(treeStringify(jsonValue), -1);
-
-        if (hasLocalStorage) {
-            localStorage.setItem('treeStringifyInput', editorValue);
-        }
     } catch (e) {
         console.error(e);
+    }
+
+    if (hasLocalStorage) {
+        localStorage.setItem('treeStringifyInput', editorValue);
     }
 }
 

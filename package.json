@@ -21,7 +21,7 @@
     "postcss-loader": "^0.9.1",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
-    "tree-stringify": "^1.0.2",
+    "tree-stringify": "latest",
     "webpack": "^1.13.1"
   },
   "eslintConfig": {
