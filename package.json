@@ -1,6 +1,6 @@
 {
   "name": "tree-stringify",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Transforms an object into a beautiful tree",
   "main": "./lib/tree-stringify.js",
   "bin": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://www.github.com/kmck/tree-stringify"
+    "url": "https://github.com/kmck/tree-stringify.git"
   },
   "keywords": [
     "tree",

@@ -1,6 +1,8 @@
 # tree-stringify
 
-Transforms an object into a beautiful tree
+Transforms an object into a beautiful tree.
+
+Check out the [demo](https://kmck.github.io/tree-stringify/), if you like.
 
 ## Installation
 
