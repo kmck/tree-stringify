@@ -1,6 +1,6 @@
 {
   "name": "tree-stringify",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Transforms an object into a beautiful tree",
   "main": "./lib/tree-stringify.js",
   "bin": {
@@ -22,7 +22,7 @@
   "author": "Keith McKnight",
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4.11.1",
+    "lodash": "^4.x",
     "minimist": "^1.2.0"
   },
   "eslintConfig": {
