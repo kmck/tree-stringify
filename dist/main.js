@@ -96,7 +96,7 @@
 	var initialValue = hasLocalStorage ? localStorage.getItem('treeStringifyInput') : '';
 
 	if (!initialValue) {
-	    initialValue = JSON.stringify(pick(__webpack_require__(84), [
+	    initialValue = JSON.stringify(pick(__webpack_require__(73), [
 	        'name',
 	        'version',
 	        'description',
@@ -21977,9 +21977,9 @@
 	var ARRAY_PLACEHOLDER = '─┐  ';
 
 	var size = __webpack_require__(40);
-	var toPairs = __webpack_require__(77);
-	var isArray = __webpack_require__(64);
-	var isPlainObject = __webpack_require__(83);
+	var toPairs = __webpack_require__(67);
+	var isArray = __webpack_require__(30);
+	var isPlainObject = __webpack_require__(72);
 
 	function firstKey(obj) {
 	    return Object.keys(obj)[0];
@@ -22069,11 +22069,11 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var getTag = __webpack_require__(41),
-	    isArrayLike = __webpack_require__(58),
-	    isObjectLike = __webpack_require__(62),
-	    isString = __webpack_require__(63),
-	    keys = __webpack_require__(65),
-	    stringSize = __webpack_require__(75);
+	    isArrayLike = __webpack_require__(26),
+	    isObjectLike = __webpack_require__(18),
+	    isString = __webpack_require__(56),
+	    keys = __webpack_require__(57),
+	    stringSize = __webpack_require__(65);
 
 	/** `Object#toString` result references. */
 	var mapTag = '[object Map]',
@@ -22125,11 +22125,11 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var DataView = __webpack_require__(42),
-	    Map = __webpack_require__(54),
-	    Promise = __webpack_require__(55),
-	    Set = __webpack_require__(56),
-	    WeakMap = __webpack_require__(57),
-	    toSource = __webpack_require__(52);
+	    Map = __webpack_require__(52),
+	    Promise = __webpack_require__(53),
+	    Set = __webpack_require__(54),
+	    WeakMap = __webpack_require__(55),
+	    toSource = __webpack_require__(50);
 
 	/** `Object#toString` result references. */
 	var mapTag = '[object Map]',
@@ -22201,7 +22201,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var getNative = __webpack_require__(43),
-	    root = __webpack_require__(50);
+	    root = __webpack_require__(48);
 
 	/* Built-in method references that are verified to be native. */
 	var DataView = getNative(root, 'DataView');
@@ -22214,7 +22214,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var baseIsNative = __webpack_require__(44),
-	    getValue = __webpack_require__(53);
+	    getValue = __webpack_require__(51);
 
 	/**
 	 * Gets the native function at `key` of `object`.
@@ -22236,11 +22236,11 @@
 /* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isFunction = __webpack_require__(45),
-	    isHostObject = __webpack_require__(47),
-	    isMasked = __webpack_require__(48),
-	    isObject = __webpack_require__(46),
-	    toSource = __webpack_require__(52);
+	var isFunction = __webpack_require__(16),
+	    isHostObject = __webpack_require__(45),
+	    isMasked = __webpack_require__(46),
+	    isObject = __webpack_require__(13),
+	    toSource = __webpack_require__(50);
 
 	/**
 	 * Used to match `RegExp`
@@ -22287,92 +22287,6 @@
 
 /***/ },
 /* 45 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var isObject = __webpack_require__(46);
-
-	/** `Object#toString` result references. */
-	var funcTag = '[object Function]',
-	    genTag = '[object GeneratorFunction]';
-
-	/** Used for built-in method references. */
-	var objectProto = Object.prototype;
-
-	/**
-	 * Used to resolve the
-	 * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
-	 * of values.
-	 */
-	var objectToString = objectProto.toString;
-
-	/**
-	 * Checks if `value` is classified as a `Function` object.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 0.1.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is correctly classified,
-	 *  else `false`.
-	 * @example
-	 *
-	 * _.isFunction(_);
-	 * // => true
-	 *
-	 * _.isFunction(/abc/);
-	 * // => false
-	 */
-	function isFunction(value) {
-	  // The use of `Object#toString` avoids issues with the `typeof` operator
-	  // in Safari 8 which returns 'object' for typed array and weak map constructors,
-	  // and PhantomJS 1.9 which returns 'function' for `NodeList` instances.
-	  var tag = isObject(value) ? objectToString.call(value) : '';
-	  return tag == funcTag || tag == genTag;
-	}
-
-	module.exports = isFunction;
-
-
-/***/ },
-/* 46 */
-/***/ function(module, exports) {
-
-	/**
-	 * Checks if `value` is the
-	 * [language type](http://www.ecma-international.org/ecma-262/6.0/#sec-ecmascript-language-types)
-	 * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 0.1.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is an object, else `false`.
-	 * @example
-	 *
-	 * _.isObject({});
-	 * // => true
-	 *
-	 * _.isObject([1, 2, 3]);
-	 * // => true
-	 *
-	 * _.isObject(_.noop);
-	 * // => true
-	 *
-	 * _.isObject(null);
-	 * // => false
-	 */
-	function isObject(value) {
-	  var type = typeof value;
-	  return !!value && (type == 'object' || type == 'function');
-	}
-
-	module.exports = isObject;
-
-
-/***/ },
-/* 47 */
 /***/ function(module, exports) {
 
 	/**
@@ -22398,10 +22312,10 @@
 
 
 /***/ },
-/* 48 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var coreJsData = __webpack_require__(49);
+	var coreJsData = __webpack_require__(47);
 
 	/** Used to detect methods masquerading as native. */
 	var maskSrcKey = (function() {
@@ -22424,10 +22338,10 @@
 
 
 /***/ },
-/* 49 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var root = __webpack_require__(50);
+	var root = __webpack_require__(48);
 
 	/** Used to detect overreaching core-js shims. */
 	var coreJsData = root['__core-js_shared__'];
@@ -22436,10 +22350,10 @@
 
 
 /***/ },
-/* 50 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var checkGlobal = __webpack_require__(51);
+	/* WEBPACK VAR INJECTION */(function(global) {var checkGlobal = __webpack_require__(49);
 
 	/** Detect free variable `global` from Node.js. */
 	var freeGlobal = checkGlobal(typeof global == 'object' && global);
@@ -22458,7 +22372,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 51 */
+/* 49 */
 /***/ function(module, exports) {
 
 	/**
@@ -22476,7 +22390,7 @@
 
 
 /***/ },
-/* 52 */
+/* 50 */
 /***/ function(module, exports) {
 
 	/** Used to resolve the decompiled source of functions. */
@@ -22505,7 +22419,7 @@
 
 
 /***/ },
-/* 53 */
+/* 51 */
 /***/ function(module, exports) {
 
 	/**
@@ -22524,11 +22438,11 @@
 
 
 /***/ },
-/* 54 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var getNative = __webpack_require__(43),
-	    root = __webpack_require__(50);
+	    root = __webpack_require__(48);
 
 	/* Built-in method references that are verified to be native. */
 	var Map = getNative(root, 'Map');
@@ -22537,11 +22451,11 @@
 
 
 /***/ },
-/* 55 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var getNative = __webpack_require__(43),
-	    root = __webpack_require__(50);
+	    root = __webpack_require__(48);
 
 	/* Built-in method references that are verified to be native. */
 	var Promise = getNative(root, 'Promise');
@@ -22550,11 +22464,11 @@
 
 
 /***/ },
-/* 56 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var getNative = __webpack_require__(43),
-	    root = __webpack_require__(50);
+	    root = __webpack_require__(48);
 
 	/* Built-in method references that are verified to be native. */
 	var Set = getNative(root, 'Set');
@@ -22563,11 +22477,11 @@
 
 
 /***/ },
-/* 57 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var getNative = __webpack_require__(43),
-	    root = __webpack_require__(50);
+	    root = __webpack_require__(48);
 
 	/* Built-in method references that are verified to be native. */
 	var WeakMap = getNative(root, 'WeakMap');
@@ -22576,170 +22490,11 @@
 
 
 /***/ },
-/* 58 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getLength = __webpack_require__(59),
-	    isFunction = __webpack_require__(45),
-	    isLength = __webpack_require__(61);
-
-	/**
-	 * Checks if `value` is array-like. A value is considered array-like if it's
-	 * not a function and has a `value.length` that's an integer greater than or
-	 * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 4.0.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
-	 * @example
-	 *
-	 * _.isArrayLike([1, 2, 3]);
-	 * // => true
-	 *
-	 * _.isArrayLike(document.body.children);
-	 * // => true
-	 *
-	 * _.isArrayLike('abc');
-	 * // => true
-	 *
-	 * _.isArrayLike(_.noop);
-	 * // => false
-	 */
-	function isArrayLike(value) {
-	  return value != null && isLength(getLength(value)) && !isFunction(value);
-	}
-
-	module.exports = isArrayLike;
-
-
-/***/ },
-/* 59 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var baseProperty = __webpack_require__(60);
-
-	/**
-	 * Gets the "length" property value of `object`.
-	 *
-	 * **Note:** This function is used to avoid a
-	 * [JIT bug](https://bugs.webkit.org/show_bug.cgi?id=142792) that affects
-	 * Safari on at least iOS 8.1-8.3 ARM64.
-	 *
-	 * @private
-	 * @param {Object} object The object to query.
-	 * @returns {*} Returns the "length" value.
-	 */
-	var getLength = baseProperty('length');
-
-	module.exports = getLength;
-
-
-/***/ },
-/* 60 */
-/***/ function(module, exports) {
-
-	/**
-	 * The base implementation of `_.property` without support for deep paths.
-	 *
-	 * @private
-	 * @param {string} key The key of the property to get.
-	 * @returns {Function} Returns the new accessor function.
-	 */
-	function baseProperty(key) {
-	  return function(object) {
-	    return object == null ? undefined : object[key];
-	  };
-	}
-
-	module.exports = baseProperty;
-
-
-/***/ },
-/* 61 */
-/***/ function(module, exports) {
-
-	/** Used as references for various `Number` constants. */
-	var MAX_SAFE_INTEGER = 9007199254740991;
-
-	/**
-	 * Checks if `value` is a valid array-like length.
-	 *
-	 * **Note:** This function is loosely based on
-	 * [`ToLength`](http://ecma-international.org/ecma-262/6.0/#sec-tolength).
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 4.0.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a valid length,
-	 *  else `false`.
-	 * @example
-	 *
-	 * _.isLength(3);
-	 * // => true
-	 *
-	 * _.isLength(Number.MIN_VALUE);
-	 * // => false
-	 *
-	 * _.isLength(Infinity);
-	 * // => false
-	 *
-	 * _.isLength('3');
-	 * // => false
-	 */
-	function isLength(value) {
-	  return typeof value == 'number' &&
-	    value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
-	}
-
-	module.exports = isLength;
-
-
-/***/ },
-/* 62 */
-/***/ function(module, exports) {
-
-	/**
-	 * Checks if `value` is object-like. A value is object-like if it's not `null`
-	 * and has a `typeof` result of "object".
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 4.0.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
-	 * @example
-	 *
-	 * _.isObjectLike({});
-	 * // => true
-	 *
-	 * _.isObjectLike([1, 2, 3]);
-	 * // => true
-	 *
-	 * _.isObjectLike(_.noop);
-	 * // => false
-	 *
-	 * _.isObjectLike(null);
-	 * // => false
-	 */
-	function isObjectLike(value) {
-	  return !!value && typeof value == 'object';
-	}
-
-	module.exports = isObjectLike;
-
-
-/***/ },
-/* 63 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var isArray = __webpack_require__(64),
-	    isObjectLike = __webpack_require__(62);
+	var isArray = __webpack_require__(30),
+	    isObjectLike = __webpack_require__(18);
 
 	/** `Object#toString` result references. */
 	var stringTag = '[object String]';
@@ -22781,49 +22536,15 @@
 
 
 /***/ },
-/* 64 */
-/***/ function(module, exports) {
-
-	/**
-	 * Checks if `value` is classified as an `Array` object.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 0.1.0
-	 * @type {Function}
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is correctly classified,
-	 *  else `false`.
-	 * @example
-	 *
-	 * _.isArray([1, 2, 3]);
-	 * // => true
-	 *
-	 * _.isArray(document.body.children);
-	 * // => false
-	 *
-	 * _.isArray('abc');
-	 * // => false
-	 *
-	 * _.isArray(_.noop);
-	 * // => false
-	 */
-	var isArray = Array.isArray;
-
-	module.exports = isArray;
-
-
-/***/ },
-/* 65 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseHas = __webpack_require__(66),
-	    baseKeys = __webpack_require__(68),
-	    indexKeys = __webpack_require__(69),
-	    isArrayLike = __webpack_require__(58),
-	    isIndex = __webpack_require__(73),
-	    isPrototype = __webpack_require__(74);
+	var baseHas = __webpack_require__(58),
+	    baseKeys = __webpack_require__(60),
+	    indexKeys = __webpack_require__(61),
+	    isArrayLike = __webpack_require__(26),
+	    isIndex = __webpack_require__(63),
+	    isPrototype = __webpack_require__(64);
 
 	/**
 	 * Creates an array of the own enumerable property names of `object`.
@@ -22877,10 +22598,10 @@
 
 
 /***/ },
-/* 66 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getPrototype = __webpack_require__(67);
+	var getPrototype = __webpack_require__(59);
 
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -22909,7 +22630,7 @@
 
 
 /***/ },
-/* 67 */
+/* 59 */
 /***/ function(module, exports) {
 
 	/* Built-in method references for those with the same name as other `lodash` methods. */
@@ -22930,7 +22651,7 @@
 
 
 /***/ },
-/* 68 */
+/* 60 */
 /***/ function(module, exports) {
 
 	/* Built-in method references for those with the same name as other `lodash` methods. */
@@ -22952,14 +22673,14 @@
 
 
 /***/ },
-/* 69 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseTimes = __webpack_require__(70),
-	    isArguments = __webpack_require__(71),
-	    isArray = __webpack_require__(64),
-	    isLength = __webpack_require__(61),
-	    isString = __webpack_require__(63);
+	var baseTimes = __webpack_require__(62),
+	    isArguments = __webpack_require__(24),
+	    isArray = __webpack_require__(30),
+	    isLength = __webpack_require__(29),
+	    isString = __webpack_require__(56);
 
 	/**
 	 * Creates an array of index keys for `object` values of arrays,
@@ -22982,7 +22703,7 @@
 
 
 /***/ },
-/* 70 */
+/* 62 */
 /***/ function(module, exports) {
 
 	/**
@@ -23008,98 +22729,7 @@
 
 
 /***/ },
-/* 71 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var isArrayLikeObject = __webpack_require__(72);
-
-	/** `Object#toString` result references. */
-	var argsTag = '[object Arguments]';
-
-	/** Used for built-in method references. */
-	var objectProto = Object.prototype;
-
-	/** Used to check objects for own properties. */
-	var hasOwnProperty = objectProto.hasOwnProperty;
-
-	/**
-	 * Used to resolve the
-	 * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
-	 * of values.
-	 */
-	var objectToString = objectProto.toString;
-
-	/** Built-in value references. */
-	var propertyIsEnumerable = objectProto.propertyIsEnumerable;
-
-	/**
-	 * Checks if `value` is likely an `arguments` object.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 0.1.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is correctly classified,
-	 *  else `false`.
-	 * @example
-	 *
-	 * _.isArguments(function() { return arguments; }());
-	 * // => true
-	 *
-	 * _.isArguments([1, 2, 3]);
-	 * // => false
-	 */
-	function isArguments(value) {
-	  // Safari 8.1 incorrectly makes `arguments.callee` enumerable in strict mode.
-	  return isArrayLikeObject(value) && hasOwnProperty.call(value, 'callee') &&
-	    (!propertyIsEnumerable.call(value, 'callee') || objectToString.call(value) == argsTag);
-	}
-
-	module.exports = isArguments;
-
-
-/***/ },
-/* 72 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var isArrayLike = __webpack_require__(58),
-	    isObjectLike = __webpack_require__(62);
-
-	/**
-	 * This method is like `_.isArrayLike` except that it also checks if `value`
-	 * is an object.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 4.0.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is an array-like object,
-	 *  else `false`.
-	 * @example
-	 *
-	 * _.isArrayLikeObject([1, 2, 3]);
-	 * // => true
-	 *
-	 * _.isArrayLikeObject(document.body.children);
-	 * // => true
-	 *
-	 * _.isArrayLikeObject('abc');
-	 * // => false
-	 *
-	 * _.isArrayLikeObject(_.noop);
-	 * // => false
-	 */
-	function isArrayLikeObject(value) {
-	  return isObjectLike(value) && isArrayLike(value);
-	}
-
-	module.exports = isArrayLikeObject;
-
-
-/***/ },
-/* 73 */
+/* 63 */
 /***/ function(module, exports) {
 
 	/** Used as references for various `Number` constants. */
@@ -23127,7 +22757,7 @@
 
 
 /***/ },
-/* 74 */
+/* 64 */
 /***/ function(module, exports) {
 
 	/** Used for built-in method references. */
@@ -23151,10 +22781,10 @@
 
 
 /***/ },
-/* 75 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var reHasComplexSymbol = __webpack_require__(76);
+	var reHasComplexSymbol = __webpack_require__(66);
 
 	/** Used to compose unicode character classes. */
 	var rsAstralRange = '\\ud800-\\udfff',
@@ -23204,7 +22834,7 @@
 
 
 /***/ },
-/* 76 */
+/* 66 */
 /***/ function(module, exports) {
 
 	/** Used to compose unicode character classes. */
@@ -23223,11 +22853,11 @@
 
 
 /***/ },
-/* 77 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var createToPairs = __webpack_require__(78),
-	    keys = __webpack_require__(65);
+	var createToPairs = __webpack_require__(68),
+	    keys = __webpack_require__(57);
 
 	/**
 	 * Creates an array of own enumerable string keyed-value pairs for `object`
@@ -23259,13 +22889,13 @@
 
 
 /***/ },
-/* 78 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseToPairs = __webpack_require__(79),
+	var baseToPairs = __webpack_require__(69),
 	    getTag = __webpack_require__(41),
-	    mapToArray = __webpack_require__(81),
-	    setToPairs = __webpack_require__(82);
+	    mapToArray = __webpack_require__(70),
+	    setToPairs = __webpack_require__(71);
 
 	/** `Object#toString` result references. */
 	var mapTag = '[object Map]',
@@ -23295,10 +22925,10 @@
 
 
 /***/ },
-/* 79 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var arrayMap = __webpack_require__(80);
+	var arrayMap = __webpack_require__(20);
 
 	/**
 	 * The base implementation of `_.toPairs` and `_.toPairsIn` which creates an array
@@ -23319,34 +22949,7 @@
 
 
 /***/ },
-/* 80 */
-/***/ function(module, exports) {
-
-	/**
-	 * A specialized version of `_.map` for arrays without support for iteratee
-	 * shorthands.
-	 *
-	 * @private
-	 * @param {Array} [array] The array to iterate over.
-	 * @param {Function} iteratee The function invoked per iteration.
-	 * @returns {Array} Returns the new mapped array.
-	 */
-	function arrayMap(array, iteratee) {
-	  var index = -1,
-	      length = array ? array.length : 0,
-	      result = Array(length);
-
-	  while (++index < length) {
-	    result[index] = iteratee(array[index], index, array);
-	  }
-	  return result;
-	}
-
-	module.exports = arrayMap;
-
-
-/***/ },
-/* 81 */
+/* 70 */
 /***/ function(module, exports) {
 
 	/**
@@ -23370,7 +22973,7 @@
 
 
 /***/ },
-/* 82 */
+/* 71 */
 /***/ function(module, exports) {
 
 	/**
@@ -23394,12 +22997,12 @@
 
 
 /***/ },
-/* 83 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getPrototype = __webpack_require__(67),
-	    isHostObject = __webpack_require__(47),
-	    isObjectLike = __webpack_require__(62);
+	var getPrototype = __webpack_require__(59),
+	    isHostObject = __webpack_require__(45),
+	    isObjectLike = __webpack_require__(18);
 
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -23470,12 +23073,12 @@
 
 
 /***/ },
-/* 84 */
+/* 73 */
 /***/ function(module, exports) {
 
 	module.exports = {
 		"name": "tree-stringify",
-		"version": "1.0.1",
+		"version": "1.0.2",
 		"description": "Transforms an object into a beautiful tree",
 		"main": "./lib/tree-stringify.js",
 		"bin": {
@@ -23486,7 +23089,7 @@
 		},
 		"repository": {
 			"type": "git",
-			"url": "http://www.github.com/kmck/tree-stringify"
+			"url": "git+https://github.com/kmck/tree-stringify.git"
 		},
 		"keywords": [
 			"tree",
@@ -23507,12 +23110,16 @@
 				"node": true
 			}
 		},
-		"readme": "# tree-stringify\n\nTransforms an object into a beautiful tree\n\n## Installation\n\n    npm install -g tree-stringify\n\n## Usage\n\nConvert a JSON file to pretty readable tree format:\n\n    $ tree-stringify --path=path/to/file.json\n\nFor example, converting this library's `package.json` to the tree-stringified format looks like this:\n\n```\n ├─ name: tree-stringify\n ├─ version: 1.0.0\n ├─ description: Transforms an object into a beautiful tree\n ├─ main: ./lib/tree-stringify.js\n ├─ bin\n │   └─ tree-stringify: ./lib/cli.js\n ├─ scripts\n │   └─ test: echo \"Error: no test specified\" && exit 1\n ├─ repository\n │   ├─ type: git\n │   └─ url: http://www.github.com/kmck/tree-stringify\n ├─ keywords\n │   ├─ tree\n │   ├─ stringify\n │   ├─ box drawing\n │   └─ cli\n ├─ author: Keith McKnight\n ├─ license: MIT\n ├─ dependencies\n │   ├─ lodash: ^4.11.1\n │   └─ minimist: ^1.2.0\n └─ eslintConfig\n     └─ env\n         └─ node: true\n```\n",
+		"readme": "# tree-stringify\n\nTransforms an object into a beautiful tree.\n\nCheck out the [demo](https://kmck.github.io/tree-stringify/), if you like.\n\n## Installation\n\n    npm install -g tree-stringify\n\n## Usage\n\nConvert a JSON file to pretty readable tree format:\n\n    $ tree-stringify --path=path/to/file.json\n\nFor example, converting this library's `package.json` to the tree-stringified format looks like this:\n\n```\n ├─ name: tree-stringify\n ├─ version: 1.0.0\n ├─ description: Transforms an object into a beautiful tree\n ├─ main: ./lib/tree-stringify.js\n ├─ bin\n │   └─ tree-stringify: ./lib/cli.js\n ├─ scripts\n │   └─ test: echo \"Error: no test specified\" && exit 1\n ├─ repository\n │   ├─ type: git\n │   └─ url: http://www.github.com/kmck/tree-stringify\n ├─ keywords\n │   ├─ tree\n │   ├─ stringify\n │   ├─ box drawing\n │   └─ cli\n ├─ author: Keith McKnight\n ├─ license: MIT\n ├─ dependencies\n │   ├─ lodash: ^4.11.1\n │   └─ minimist: ^1.2.0\n └─ eslintConfig\n     └─ env\n         └─ node: true\n```\n",
 		"readmeFilename": "README.md",
-		"gitHead": "4e77907235a66be41f0b1f224fed18e4c4548f63",
-		"_id": "tree-stringify@1.0.1",
-		"_shasum": "091d977c6cebebc852cb41c73b09aaa7f6b4d7a5",
-		"_from": "tree-stringify@*"
+		"gitHead": "151aa123ac2cfeb7aa383d8f893e8c4794e914a2",
+		"bugs": {
+			"url": "https://github.com/kmck/tree-stringify/issues"
+		},
+		"homepage": "https://github.com/kmck/tree-stringify#readme",
+		"_id": "tree-stringify@1.0.2",
+		"_shasum": "4b0139b34dd4c5c3caf2df2492850e9d98ee97c3",
+		"_from": "tree-stringify@latest"
 	};
 
 /***/ }
