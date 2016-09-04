@@ -1,0 +1,12 @@
+{
+  "string": "test",
+  "int": 1,
+  "decimal": 3.14,
+  "scientific": 9e3,
+  "zero": 0,
+  "true": true,
+  "false": false,
+  "null": null,
+  "object": {},
+  "array": []
+}

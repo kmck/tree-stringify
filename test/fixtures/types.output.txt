@@ -1,0 +1,10 @@
+ ├─ string: test
+ ├─ int: 1
+ ├─ decimal: 3.14
+ ├─ scientific: 9000
+ ├─ zero: 0
+ ├─ true: true
+ ├─ false: false
+ ├─ null
+ ├─ object
+ └─ array

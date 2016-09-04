@@ -1,13 +1,13 @@
 {
   "name": "tree-stringify",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Transforms an object into a beautiful tree",
   "main": "./lib/tree-stringify.js",
   "bin": {
     "tree-stringify": "./lib/cli.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp"
   },
   "repository": {
     "type": "git",
@@ -25,9 +25,16 @@
     "lodash": "^4.x",
     "minimist": "^1.2.0"
   },
-  "eslintConfig": {
-    "env": {
-      "node": true
-    }
-  }
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "glob": "^7.0.6",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1",
+    "gulp-istanbul": "^1.1.1",
+    "gulp-mocha": "^3.0.1",
+    "semver": "^5.3.0"
+  },
+  "files": [
+    "/lib"
+  ]
 }

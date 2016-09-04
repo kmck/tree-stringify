@@ -1,0 +1,15 @@
+{
+  "str": "str",
+  "arr": [420, "69"],
+  "obj": { "a": 1, "b": 2, "c": 3 },
+  "arr-obj": [
+    { "dog": "woof", "name": "franny" },
+    { "cat": "meow", "name": "nova scotia" },
+    { "pig": "oink", "name": "franklin" }
+  ],
+  "obj-arr": { "one": [1], "two": [2, 2], "three": [3, 3, 3] },
+  "arr-arr": ["please", ["send", ["help"], "thanks"], "bye"],
+  "obj-obj": { "dog": {"color": "red", "friendly": true } },
+  "nested-arr": [[["aesthetic"]]],
+  "nested-obj": { "": { "": { "": {} } } }
+}

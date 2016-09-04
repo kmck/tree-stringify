@@ -1,0 +1,7 @@
+{
+  "wrap": {
+    "key": "value",
+    "anotherKey": "anotherValue"
+  },
+  "noWrap": "woops!"
+}
