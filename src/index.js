@@ -1,6 +1,8 @@
-require('./styles.scss');
+var createBeaf = require('beaf').createBeaf;
 
-var ace = require('brace');
+require('./reset.css');
+require('./styles.css');
+
 require('brace/mode/json');
 require('brace/theme/monokai');
 
@@ -10,70 +12,49 @@ var pick = require('lodash/pick');
 var JSON5 = require('json5');
 var treeStringify = require('tree-stringify');
 
-var inputTextarea = document.getElementById('input');
-var outputTextarea = document.getElementById('output');
+var throttledDispatch = throttle(function(resolve, reject, input) {
+  try {
+    resolve(treeStringify(JSON5.parse(input || '{}')));
+  } catch (e) {
+    // nope
+  }
+}, 100);
 
-var inputEditor = ace.edit(inputTextarea);
-inputEditor.setTheme('ace/theme/monokai');
-inputEditor.getSession().setMode('ace/mode/json');
-inputEditor.setShowPrintMargin(false);
-inputEditor.$blockScrolling = Infinity;
+createBeaf({
+  title: 'tree-stringify',
+  titleUrl: 'https://github.com/kmck/tree-stringify',
+  theme: 'monokai',
+  inputTitle: 'JSON',
+  inputMode: 'json',
+  outputTitle: 'Output',
+  menuItems: [{
+    name: 'github',
+    url: 'https://github.com/kmck/tree-stringify',
+  }, {
+    name: 'npm',
+    url: 'https://www.npmjs.com/package/tree-stringify',
+  }, {
+    name: 'made with beaf',
+    url: 'https://www.npmjs.com/package/beaf',
+  }],
+  input: JSON.stringify(pick(
+    require('tree-stringify/package.json'), [
+      'name',
+      'version',
+      'description',
+      'main',
+      'bin',
+      'repository',
+      'keywords',
+      'author',
+      'dependencies',
+      'eslintConfig',
+  ]), null, 2),
+  transform: function(input) {
+    return new Promise(function(resolve, reject) {
+      throttledDispatch(resolve, reject, input);
+    });
+  },
+});
 
-var outputEditor = ace.edit(outputTextarea);
-outputEditor.setTheme('ace/theme/monokai');
-outputEditor.setReadOnly(true);
-outputEditor.setShowPrintMargin(false);
-outputEditor.$blockScrolling = Infinity;
-
-var hasLocalStorage = ('localStorage' in window);
-
-function updateOutput() {
-    var editorValue = inputEditor.getValue();
-
-    try {
-        var jsonValue = JSON5.parse(editorValue);
-        outputEditor.setValue(treeStringify(jsonValue), -1);
-    } catch (e) {
-        console.error(e);
-    }
-
-    if (hasLocalStorage) {
-        localStorage.setItem('treeStringifyInput', editorValue);
-    }
-}
-
-var throttledUpdateOutput = throttle(updateOutput, 100);
-
-inputEditor.on('change', throttledUpdateOutput);
-
-// Initial value
-var initialValue = hasLocalStorage ? localStorage.getItem('treeStringifyInput') : '';
-
-if (!initialValue) {
-    initialValue = JSON.stringify(pick(require('tree-stringify/package.json'), [
-        'name',
-        'version',
-        'description',
-        'main',
-        'bin',
-        'repository',
-        'keywords',
-        'author',
-        'dependencies',
-        'eslintConfig',
-    ]), null, 2);
-}
-
-inputEditor.setValue(initialValue, 1);
-updateOutput();
-
-// Focus and reset undo manager
-inputEditor.focus();
-setTimeout(function() {
-    inputEditor.getSession().getUndoManager().reset();
-}, 0);
-
-// Globals
 window.treeStringify = treeStringify;
-window.inputEditor = inputEditor;
-window.outputEditor = outputEditor;

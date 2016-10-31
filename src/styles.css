@@ -1,0 +1,19 @@
+body {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+}
+
+.Beaf {
+  background-color: #272822;
+  color: #ffffff;
+  font-size: 12pt;
+}
+
+.BeafHeader {
+  background-color: #f92672;
+  color: #ffffff;
+}
+
+.BeafPaneHeader {
+  background-color: #a37ef2;
+  color: #ffffff;
+}

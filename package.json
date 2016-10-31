@@ -10,23 +10,27 @@
   "author": "Keith McKnight",
   "license": "MIT",
   "dependencies": {
-    "autoprefixer": "^6.3.6",
-    "brace": "^0.8.0",
-    "css-loader": "^0.23.1",
-    "json-loader": "^0.5.4",
-    "json5": "^0.5.0",
-    "lodash": "^4.13.1",
+    "beaf": "^0.1.1",
+    "brace": "^0.9.0",
+    "css-loader": "^0.25.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "json5": "^0.4.0",
+    "json5-loader": "^0.6.0",
+    "lodash": "^4.16.4",
     "minimist": "^1.2.0",
-    "node-sass": "^3.7.0",
-    "postcss-loader": "^0.9.1",
-    "sass-loader": "^3.2.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-redux": "^4.4.5",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0",
     "style-loader": "^0.13.1",
     "tree-stringify": "latest",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.3"
   },
   "eslintConfig": {
     "env": {
       "node": true
     }
-  }
+  },
+  "devDependencies": {}
 }
